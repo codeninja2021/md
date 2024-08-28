@@ -1,0 +1,154 @@
+{
+  "name": "Mirsal",
+  "version": "10.1.80",
+  "description": "Mirsal Desktop Chat App",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "test": "jest --coverage --runInBand --testPathIgnorePatterns spectron",
+    "test-ui": "jest --coverage --runInBand  spectron",
+    "premac": "electron-packager . --overwrite --asar.unpackDir=\"**/{node_modules/@ffmpeg-installer,node_modules/@ffprobe-installer,LottieEmoticons}/**\" --extraFiles=user_info.txt --extraFiles=update_info.txt  --platform=darwin --arch=x64 --ignore=^/node_modules/electron-builder --ignore=^/node_modules/electron-builder-squirrel-windows --ignore=^/node_modules/electron-packager  --ignore=^/node_modules/electron-installer-dmg --ignore=^/node_modules/@ffmpeg-installer/win32-x64 --ignore=^/node_modules/@ffprobe-installer/win32-x64   --ignore=^/test --icon=images/icon.icns --prune=true --out=release-builds --osx-sign.identity='iPhone Distribution: F Technologies LLC' --timestamp=none    --overwrite",
+    "mac": "electron-installer-dmg ./release-builds/Mirsal-darwin-x64/Mirsal.app Mirsal"
+  },
+  "build": {
+    "appId": "Mirsal",
+    "productName": "Mirsal",
+    "extraResources": "UploadedFiles/icon.png",
+    "extraFiles": [
+      "update_info.txt",
+      "user_info.txt"
+    ],
+    "asarUnpack": [
+      "node_modules/@ffmpeg-installer/${os}-${arch}/ffmpeg",
+      "node_modules/@ffprobe-installer/${os}-${arch}/ffprobe",
+      "node_modules/win-ca/*",
+      "LottieEmoticons"
+    ],
+    "mac": {
+      "category": "mirsal.desktop"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "squirrelWindows": {
+      "iconUrl": "https://path/to/valid/image.png",
+      "msi": true,
+      "useAppIdAsId": true
+    },
+    "win": {
+      "target": "squirrel",
+      "files": [
+        "!test/*",
+        "!res/*",
+        "!coverage/*",
+        "!DB/*",
+        "!codeReview/*",
+        "!docs/*",
+        "!env/*",
+        "!node_modules/win-ca/pem/*",
+        "!node_modules/@ffmpeg-installer/linux-x64/*",
+        "!node_modules/@ffmpeg-installer/linux-ia32/*",
+        "!node_modules/@ffmpeg-installer/linux-arm64/*",
+        "!node_modules/@ffmpeg-installer/linux-arm/*",
+        "!node_modules/@ffmpeg-installer/win32-ia32/*",
+        "!node_modules/@ffmpeg-installer/darwin-x64/*",
+        "!node_modules/@ffprobe-installer/linux-x64/*",
+        "!node_modules/@ffprobe-installer/linux-ia32/*",
+        "!node_modules/@ffprobe-installer/linux-arm64/*",
+        "!node_modules/@ffprobe-installer/linux-arm/*",
+        "!node_modules/@ffprobe-installer/win32-ia32/*",
+        "!node_modules/@ffprobe-installer/darwin-x64/*"
+      ]
+    },
+    "nsis": {
+      "createDesktopShortcut": "always",
+      "createStartMenuShortcut": true,
+      "runAfterFinish": true
+    }
+  },
+  "postinstall": "electron-builder install-app-deps",
+  "keywords": [
+    "Electron",
+    "Mirsal"
+  ],
+  "author": {
+    "name": "F-Technologies LLC",
+    "email": "info@nadi.ae"
+  },
+  "maintainer": "F-Technologies LLC",
+  "homepage": "https://stgmirsalassets.devinprocess.com/",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^13.3.0",
+    "electron-builder": "^21.0.15",
+    "electron-builder-squirrel-windows": "^22.14.13",
+    "jest": "^26.0.1",
+    "node-gyp": "^5.0.3",
+    "spectron": "^11.1.0",
+    "wait-for-expect": "^3.0.2",
+    "webrtc-adapter": "^7.5.1"
+  },
+  "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.0.20",
+    "@ffprobe-installer/ffprobe": "^1.1.0",
+    "@giphy/js-fetch-api": "^2.4.0",
+    "@journeyapps/sqlcipher": "^5.3.1",
+    "@ninja-labs/verify-pdf": "^1.0.0",
+    "aes-js": "^3.1.2",
+    "axios": "^0.21.4",
+    "bignumber.js": "^9.1.2",
+    "bluebird": "^3.5.5",
+    "chunking-streams": "0.0.8",
+    "date-and-time": "^0.14.2",
+    "dotenv": "^16.0.0",
+    "electron-is-dev": "^1.2.0",
+    "electron-log": "^4.1.2",
+    "electron-prompt": "^1.3.1",
+    "electron-squirrel-startup": "^1.0.0",
+    "electron-updater": "^4.3.1",
+    "electron-windows-badge": "^1.0.5",
+    "fluent-ffmpeg": "^2.1.2",
+    "hosted-git-info": "^2.8.9",
+    "jquery": "^3.5.1",
+    "jquery-validation": "^1.19.3",
+    "jsonschema": "^1.4.0",
+    "keytar": "^7.7.0",
+    "livekit-client": "^2.1.3",
+    "lodash": "^4.17.21",
+    "mark.js": "^8.11.1",
+    "matomo-tracker": "^2.2.4",
+    "mime": "^3.0.0",
+    "node-fetch": "^3.2.2",
+    "node-forge": "^1.3.1",
+    "node-rsa": "^1.0.8",
+    "node-signpdf": "^1.5.0",
+    "nodemailer": "^6.8.0",
+    "os": "^0.1.1",
+    "pkcs7": "^1.0.2",
+    "plist": "^3.0.4",
+    "popper.js": "^1.15.0",
+    "postman-request": "^2.88.1-postman.33",
+    "qrcode": "^1.5.3",
+    "request": "^2.88.0",
+    "simple-get": "^4.0.1",
+    "simple-thumbnail": "^1.6.5",
+    "sqlite-cipher": "^0.3.6",
+    "sqlite3": "^5.0.2",
+    "strophe.js": "^1.3.4",
+    "tar": "^6.1.11",
+    "underscore": "^1.12.1",
+    "url-metadata": "^2.4.0",
+    "uuid": "^3.4.0",
+    "validator": "^13.7.0",
+    "vcards-js": "^2.10.0",
+    "vcf": "^2.1.0",
+    "win-ca": "^3.4.5",
+    "ws": "^7.3.1",
+    "xml-js": "^1.6.11"
+  }
+}
