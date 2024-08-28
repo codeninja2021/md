@@ -1,7 +1,7 @@
 {
-  "name": "Mirsal",
+  "name": "MD",
   "version": "10.1.80",
-  "description": "Mirsal Desktop Chat App",
+  "description": "MD",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
