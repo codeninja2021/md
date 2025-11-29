@@ -128,7 +128,7 @@
     "strophe.js": "^3.0.1",
     "url-metadata": "^4.1.1",
     "uuid": "^10.0.0",
-    "validator": "^13.12.0",
+    "validator": "^13.15.22",
     "vcards-js": "^2.10.0",
     "vcf": "^2.1.0",
     "ws": "^7.3.1",
