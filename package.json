@@ -99,7 +99,7 @@
     "@journeyapps/sqlcipher": "^5.3.1",
     "@ninja-labs/verify-pdf": "^1.0.0",
     "aes-js": "^3.1.2",
-    "axios": "^1.7.7",
+    "axios": "^1.13.5",
     "bignumber.js": "^9.1.2",
     "chunking-streams": "0.0.8",
     "date-and-time": "^0.14.2",
